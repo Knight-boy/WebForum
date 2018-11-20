@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Camp0 - By Knight</title>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="/javascripts/common.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styleforum.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styleforum_common.css">
+</head>
+<body id="nv_forum" class="pg_index">
+
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div id="toptb" class="cl">
+    <div class="wp">
+        <div class="z">
+            <a href="javascript:;" onclick="setHomepage('http://www.knightboy.cn/');">设为首页</a>
+            <a href="http://www.knight.com/" onclick="addFavorite(this.href, '高校论坛');return false;">收藏本站</a>
+        </div>
+        <div class="y">
+            <a href="#">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+</div>
+<div id="hd">
+    <div class="wp">
+        <div class="hdc clearfix">
+            <div style="float:left">
+                <a title="高校论坛" href="javascript:;">
+                    <img alt="高校论坛" src="./images/logo.png" border="0">
+                </a>
+            </div>
+
+            <form id="lsform" onsubmit="return lsSubmit();"
+                  action="member.php?mod=logging&action=login&loginsubmit=yes&infloat=yes&lssubmit=yes" method="post"
+                  autocomplete="off">
+                <div class="fastlg">
+                    <span id="return_ls" style="display:none"></span>
+                    <div class="y pns">
+                        <table cellspacing="0" cellpadding="0">
+                        </table>
+                        <input name="quickforward" type="hidden" value="yes"/>
+                        <input name="handlekey" type="hidden" value="ls"/>
+                    </div>
+
+                    <div id="nc-float" style="display:none">
+                        <div class="nc-f-head">
+                            <img class="nc-f-icon" src="./images/TB1_3FrKVXXXXbdXXXXXXXXXXXX-129-128.png" alt=""
+                                 height="20" width="20">
+                            <span class="nc-f-title">安全验证</span>
+                            <a class="close" href="#"><i class="nc_iconfont">&#xe60c;</i></a>
+                        </div>
+                        <div class="nc-f-body" id="oculus-nc-f-body">
+                            <div class="nc-f-des">请完成以下验证码</div>
+                            <div id="_umfp" style="width:1px;height:1px"></div>
+                            <div id="nocaptcha"></div>
+                        </div>
+
+                    </div>
+                    <!--<script type="text/javascript" reload="1" defer="true">-->
+                        <!--paxmac_ready(function () {-->
+                            <!--var lsform = document.getElementById('lsform');-->
+                            <!--var o = document.createElement("button");-->
+                            <!--o.id = "header-loggin-btn";-->
+                            <!--o.setAttribute('type', 'submit');-->
+                            <!--o.value = "";-->
+                            <!--o.style.display = "none";-->
+                            <!--try {-->
+                                <!--lsform.appendChild(o);-->
+                            <!--}-->
+                            <!--catch (err) {-->
+
+                            <!--}-->
+                            <!--window['aq-nc-grey-ratio'] = 1;-->
+                            <!--o.onclick = function () {-->
+                                <!--var ncf = new NCFloat(document.getElementById('nc-float'));-->
+                                <!--_nc_plugin_init('FFF10000000007279FFD', 'nocaptcha', 'lsform', 'discuz_header_nc');-->
+                                <!--discuz_header_nc.on('success', function () {-->
+                                    <!--ncf.hide(1);-->
+                                    <!--lsSubmit();-->
+                                <!--});-->
+                                <!--discuz_header_nc.on('after_code', function () {-->
+                                    <!--document.getElementById('oculus-nc-f-body').style.height = "300px";-->
+                                <!--});-->
+                                <!--ncf.show();-->
+
+                            <!--};-->
+                        <!--});-->
+                    <!--</script>-->
+
+                </div>
+            </form>
+        </div>
+        <div id="nv">
+            <a href="javascript:;" id="qmenu"
+               onmouseover="delayShow(this,function(){showMenu({'ctrlid':'qmenu','pos':'34!','ctrlclass':'a','duration':2});showForummenu();})"
+               href="javascript:;">快捷导航</a>
+            <ul>
+                <li class="a" id="mn_forum">
+                    <a href="#" hidefocus="true" title="BBS">首页</a>
+                </li>
+                <li id="mn_N8d07">
+                    <a href="https://weibo.com/p/1005053787836194/home?from=page_100505&mod=TAB&is_all=1#place"
+                       hidefocus="true" target="_blank">微博</a>
+                </li>
+                <li id="mn_N847e">
+                    <a href="http://www.wendu.com" hidefocus="true" target="_blank">辅导</a>
+                </li>
+                <li id="mn_Nffd3">
+                    <a href="http://www.internbird.com" hidefocus="true" target="_blank">实习求职</a>
+                </li>
+                <li id="mn_N4aba">
+                    <a href="https://www.nowcoder.com" hidefcus="true" target="_blank">牛客网</a>
+                </li>
+                <li id="mn_N58a5">
+                    <a href="./MyEditor/Editor/Editor.html" hidefocus="true" title="点击留言" target="_blank">联系我们</a>
+                </li>
+            </ul>
+        </div>
+        <div class="p_pop h_pop" id="mn_userapp_menu" style="display:none"></div>
+        <div class="clearfix" id="mu"></div>
+        <div class="clearfix" id="scbar">
+            <form id="scbar_form" onsubmit="searchFocus($('scbar_txt'))" action="search.php?searchsubmit=yes"
+                  method="post" target="_blank" autocomplete="off">
+                <input type="hidden" name="mod" id="scbar_mod" value="forum"/>
+                <input type="hidden" name="formhash" value="f7a28138"/>
+                <input type="hidden" name="srchtype" value="title"/>
+                <input type="hidden" name="srhfid" value=""/>
+                <input type="hidden" name="srhlocality" value="forum::index"/>
+                <table cellspacing="0" cellpadding="0">
+                    <tbody>
+                    <tr>
+                        <td class="scbar_icon_td"></td>
+                        <td class="scbar_txt_td">
+                            <input name="srchtxt" class="xgl" id="scbar_txt" type="text" placeholder="请输入搜索内容"
+                                   autocomplete="off" speech="" x-webkit-speech="" value="请输入搜索内容"/>
+                        </td>
+                        <td class="scbar_type_td">
+                            <a class="xgl" id="scbar_type" hidefocus="true" onclick="showMenu(this.id)"
+                               href="javascript:">帖子</a>
+                        </td>
+                        <td class="scbar_btn_td">
+                            <button name="searchsubmit" class="pn pnc" id="scbar_btn" type="submit" value="true" sc="1">
+                                <strong class="xi2">搜索</strong>
+                            </button>
+                        </td>
+                        <td class="scbar_hot_td">
+                            <div id="scbar_hot">
+                                <strong class="xw1">热搜: </strong>
+
+                                <a href="https://www.baidu.com/s?tn=80035161_2_dg&wd=%E9%AB%98%E8%80%83" target="_blank"
+                                   class="xi2" sc="1">高考</a>
+                                <a href="http://yz.chsi.com.cn/" target="_blank" class="xi2" sc="1">考研</a>
+                                <a href="http://www.chsi.com.cn/" target="_blank" class="xi2" sc="1">学信网</a>
+                                <a href="search.php?mod=forum&amp;srchtxt=%E6%8E%A8%E5%85%8D&amp;formhash=becfb93b&amp;searchsubmit=true&amp;source=hotsearch"
+                                   target="_blank" class="xi2" sc="1">推免</a>
+                                <a href="search.php?mod=forum&amp;srchtxt=%E6%8B%9B%E7%94%9F%E7%AE%80%E7%AB%A0&amp;formhash=becfb93b&amp;searchsubmit=true&amp;source=hotsearch"
+                                   target="_blank" class="xi2" sc="1">招生简章</a>
+
+                            </div>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+
+        </div>
+        <ul class="p_pop" id="scbar_type_menu" style="display:none;">
+            <li>
+                <a class="curtype" href="javascript:;" rel="forum">帖子</a>
+            </li>
+            <li>
+                <a href="javascript:;" rel="user">用户</a>
+            </li>
+        </ul>
+        <script type="text/javascript">initSearchmenu('scbar', '');</script>
+    </div>
+</div>
+<div id="nc-float" style="display:none">
+    <div class="nc-f-head">
+        <img class="nc-f-icon" src="./images/TB1_3FrKVXXXXbdXXXXXXXXXXXX-129-128.png" alt="" height="20" width="20">
+        <span class="nc-f-title">安全验证</span>
+        <a class="close" href="#"><i class="nc_iconfont"></i></a>
+    </div>
+    <div class="nc-f-body" id="oculus-nc-f-body">
+        <div class="nc-f-des">请完成以下验证码</div>
+        <div id="nocaptcha"></div>
+    </div>
+
+</div>
+<div class="wp" id="wp">
+    <div class="bm clearfix" id="pt">
+        <div class="z">
+            <a title="首页" class="nvhm" href="/forum">高校论坛</a>
+            <em></em>
+            <a href="/forum">首页</a>
+            <em></em>
+            <a href="/EEer0">学生交流</a>
+            <em></em>
+            <a href="#">保研/考研</a>
+        </div>
+        <div class="z"></div>
+    </div>
+    <div class="wp">
+        <!--[diy=diy1]-->
+        <div class="area" id="diy1"></div>
+        <!--[/diy]-->
+    </div>
+    <div class="boardnav">
+        <div class="wp clearfix" id="ct">
+
+            <!--[diy=diy_chart]-->
+            <div class="area" id="diy_chart"></div>
+            <!--[/diy]-->
+            <div class="mn">
+                <div class="bm bml pbn">
+                    <div class="bm_h clearfix">
+                        <span class="y">
+                            <a class="fa_fav" id="a_favorite" onclick="showWindow(this.id,this.href,'get',0)"
+                               href="javascript:;">
+                                收藏本版
+                                <strong class="xil" id="number_favorite">
+                                    (
+                                    <span id="number_favorite_num">3475</span>
+                                    )
+                                </strong>
+                            </a>
+                            <span class="pipe">|</span>
+                            <a title="RSS" href="#" class="fa_rss" target="_blank">订阅</a>
+                        </span>
+                        <h1 class="xs2" style="padding:5px 0 0 0;">
+                            <a href="#">保研/考研</a>
+                            <span class="xsl xw0 i">
+                                今日：
+                                <strong class="xil">95</strong>
+                                <b class="ico_fall"></b>
+                                <span class="pipe">|</span>
+                                主题：
+                                <strong class="xil">1351</strong>
+                                <span class="pipe">|</span>
+                                排名：
+                                <strong title="上次排名：3" class="xil">3</strong>
+                                <b class="ico_increase"></b>
+                            </span>
+                        </h1>
+                    </div>
+                </div>
+                <!--<link href="./template/wj_paihang.css" rel="stylesheet">-->
+                <div class="wp mtn">
+                    <!--[diy=diy3]-->
+                    <div class="area" id="diy3"></div>
+                    <!--[/diy]-->
+                </div>
+                <div class="bm bw0 pgs clearfix" id="pgt">
+                    <div class="pg" style="height:30px;">
+                        <span id="fd-page" style="position:relative;top:-20px;">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a class="last" href="#">...</a></li>
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                        </span>
+                    </div>
+                    <a title="发帖" id="newspecial" onmouseover="" onclick="" href="./MyEditor/Editor/Editor.html"
+                       target="_blank">
+                        <button class="btn btn-primary disabled">发帖</button>
+                    </a>
+                </div>
+                <div class="col-md-12">
+                    <script type="text/javascript" src="/javascripts/EventUtil.js"></script>
+                    <div class="div" style="border:none;margin: 0 -15px 5px;">
+                        <form method="post" action="javascript:alert('非常感谢您的支持！您的留言我们已经收到！');">
+                            <div id="toolbar">
+                                <div id="divSimple">
+                                    <p>
+                                        <button type="button" class="btn btn-default btn-xs" value="Bold" title="粗体">
+                                            <span class="glyphicon glyphicon-bold" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" value="Italic" title="斜体">
+                                            <span class="glyphicon glyphicon-italic" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" value="Underline"
+                                                title="下划线"><span class="glyphicon glyphicon-text-color"
+                                                                  aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" value="Strikethrough"
+                                                title="删除线"><span class="glyphicon glyphicon-euro"
+                                                                  aria-hidden="true"></span></button>
+
+                                        <button type="button" class="btn btn-default btn-xs" value="Superscript"
+                                                title="上标"><span class="glyphicon glyphicon-superscript"
+                                                                 aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" value="Subscript"
+                                                title="下标"><span class="glyphicon glyphicon-subscript"
+                                                                 aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" value="Indent" title="缩进">
+                                            <span class="glyphicon glyphicon-indent-left" aria-hidden="true"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-xs" value="Outdent" title="突起">
+                                            <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span>
+                                        </button>
+
+                                        <button type="button" class="btn btn-default btn-xs" value="Justifyleft"
+                                                title="左对齐"><span class="glyphicon glyphicon-align-left"
+                                                                  aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" value="Justifycenter"
+                                                title="居中"><span class="glyphicon glyphicon-align-center"
+                                                                 aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" value="Justifyright"
+                                                title="右对齐"><span class="glyphicon glyphicon-align-right"
+                                                                  aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" value="Justify"
+                                                title="分散对齐"><span class="glyphicon glyphicon-align-justify"
+                                                                   aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" value="Copy" title="复制">
+                                            <span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" value="Cut" title="剪切">
+                                            <span class="glyphicon glyphicon-scissors" aria-hidden="true"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-xs" value="Paste" title="粘贴">
+                                            <span class="glyphicon glyphicon-paste" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" value="Selectall"
+                                                title="全选"><span class="glyphicon glyphicon-ok-circle"
+                                                                 aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" value="Removeformat"
+                                                title="格式化"><span class="glyphicon glyphicon-eye-close"
+                                                                  aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" value="Delete" title="删除">
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+
+                                        <button type="button" class="btn btn-default btn-xs" value="Print" title="打印">
+                                            <span class="glyphicon glyphicon-print" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" value="InsertOrderedList"
+                                                title="有序列表"><span class="glyphicon glyphicon-sort-by-attributes"
+                                                                   aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" value="InsertUnOrderedList"
+                                                title="无序列表"><span class="glyphicon glyphicon-random"
+                                                                   aria-hidden="true"></span></button>
+
+                                    </p>
+                                </div>
+
+                                <div id="divComplex">
+                                    <p>
+                                        <button type="button" class="btn btn-default btn-xs" value="Create Link"
+                                                id="btnCreateLink" title="超链接"><span class="glyphicon glyphicon-link"
+                                                                                     aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" value="UnLink"
+                                                id="btnUnlink" title="取消超链接"><span class="glyphicon glyphicon-paperclip"
+                                                                                   aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs">
+                                            <span class="glyphicon glyphicon-header" aria-hidden="true"></span>
+                                            <select name="title" id="btnHead" title="标题">
+                                                <option value="<h1>">标题h1(36px)</option>
+                                                <option value="<h2>">标题h2(30px)</option>
+                                                <option value="<h3>">标题h3(24px)</option>
+                                                <option value="<h4>">标题h4(18px)</option>
+                                                <option value="<h5>">标题h5(14px)</option>
+                                                <option value="<h6>">标题h6(12px)</option>
+                                            </select>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-xs">
+                                            <span class="glyphicon glyphicon-font" aria-hidden="true"></span>
+                                            <select name="fontFamily" id="fontfamily" title="字体">
+                                                <option value="宋体,simsun">宋体</option>
+                                                <option value="楷体,楷体_gb2312,simkai">楷体</option>
+                                                <option value="隶书,simli">隶书</option>
+                                                <option value="黑体,simhei">黑体</option>
+                                                <option value="andale mono,times">Andale Mono</option>
+                                                <option value="arial,helvetica,sans-serif">Arial</option>
+                                                <option value="arial black,avant garde">Arial Black</option>
+                                                <option value="comic sans ms,cursive,sans-serif">Comic Sans Ms</option>
+                                                <option value="courier new,courier,monospace">Courier New</option>
+                                                <option value="georgia,serif">Georgia</option>
+                                                <option value="impact,charcoal,sans-serif">Impact</option>
+                                                <option value="lucida sans unicode,lucida grande,sans-serif">Lucida Sans
+                                                    Unicode
+                                                </option>
+                                                <option value="lucida console,monaco,monospace">Lucida Console</option>
+                                                <option value="tahoma,geneva,sans-serif">Tahoma</option>
+                                                <option value="trebuchet ms,helvetica,sans-serif">Trebuchet Ms</option>
+                                                <option value="times new roman,times,serif">Times New Roman</option>
+                                                <option value="verdana,geneva,sans-serif">Verdana</option>
+                                            </select>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-xs">
+                                            <span class="glyphicon glyphicon-text-size" aria-hidden="true"></span>
+                                            <select name="fontSize" id="fontsize" title="字体大小">
+                                                <option value="1">12 px</option>
+                                                <option value="2">14 px</option>
+                                                <option value="3">18 px</option>
+                                                <option value="4">24 px</option>
+                                                <option value="5">30 px</option>
+                                                <option value="6">36 px</option>
+                                                <option value="7">42 px</option>
+                                            </select>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-xs">
+                                            <span class="glyphicon glyphicon-text-color" aria-hidden="true"></span>
+                                            <select name="fontColor" id="fontcolor" title="字体颜色">
+                                                <option value="#000000">Black</option>
+                                                <option value="#FF0000">Red</option>
+                                                <option value="#00FF00">Green</option>
+                                                <option value="#0000FF">Blue</option>
+                                                <option value="#FFFF00">Yellow</option>
+                                                <option value="#FF00FF">Purple</option>
+                                                <option value="#00FFFF">Cyan</option>
+                                            </select>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-xs">
+                                            <span class="glyphicon glyphicon-text-background" aria-hidden="true"></span>
+                                            <select name="backColor" id="backcolor" title="背景色">
+                                                <option value="#FFFFFF">white</option>
+                                                <option value="#FF0000">Red</option>
+                                                <option value="#00FF00">Green</option>
+                                                <option value="#0000FF">Blue</option>
+                                                <option value="#FFFF00">Yellow</option>
+                                                <option value="#FF00FF">Purple</option>
+                                                <option value="#00FFFF">Cyan</option>
+                                            </select>
+                                        </button>
+                                        <!--<button type="button" class="btn btn-default btn-md" id="btnOrderedList" title="有序列表"><span class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span></button>-->
+                                        <!--<button type="button" class="btn btn-default btn-md" id="btnUnOrderedList" title="无序列表"><span class="glyphicon glyphicon-random" aria-hidden="true"></span></button>-->
+                                        <button type="button" class="btn btn-default btn-xs" id="btnHighlight"
+                                                title="高亮"><span class="glyphicon glyphicon-certificate"
+                                                                 aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" id="btnGetHtml"
+                                                title="获取HTML元素"><span class="glyphicon glyphicon-ok"
+                                                                       aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" id="btnGetSelected"
+                                                title="显示文本"><span class="glyphicon glyphicon-eye-open"
+                                                                   aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" id="btnHr" title="分隔线">
+                                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" id="btnInsertParagraph"
+                                                title="插入段落"><span class="glyphicon glyphicon-console"
+                                                                   aria-hidden="true"></span></button>
+                                    </p>
+
+                                </div>
+
+                                <div id="divQuery">
+                                    <p>
+                                        <button type="button" class="btn btn-default btn-xs" value="Bold"><span
+                                                    class="glyphicon glyphicon-bold" aria-hidden="true"></span></button>
+                                        <button type="button" class="btn btn-default btn-xs" value="Italic"><span
+                                                    class="glyphicon glyphicon-italic" aria-hidden="true"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-xs" value="Underline"><span
+                                                    class="glyphicon glyphicon-text-color" aria-hidden="true"></span>
+                                        </button>
+                                    </p>
+                                    <div class="dropdown">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<div id="editor_iframe_holder" ></div>-->
+                            <iframe name="richedit" style="min-height:35px;width:100%" contenteditable="true"></iframe>
+                            <!--<input type="show" name="comments" value="">-->
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-default">发送</button>
+                            </div>
+                        </form>
+                    </div>
+                    <script type="text/javascript">
+                        (function () {
+
+                            EventUtil.addHandler(window, "load", function () {
+                                frames["richedit"].document.designMode = "on";
+                            });
+
+                            var simple = document.getElementById("divSimple");
+                            var complex = document.getElementById("divComplex");
+                            var queryDiv = document.getElementById("divQuery");
+
+                            EventUtil.addHandler(document.forms[0], "submit", function (event) {
+                                event = EventUtil.getEvent(event);
+                                var target = EventUtil.getTarget(event);
+
+                                target.elements["comments"].value = frames["richedit"].document.body.innerHTML;
+                            });
+
+                            EventUtil.addHandler(simple, "click", function (event) {
+                                event = EventUtil.getEvent(event);
+                                var target = EventUtil.getTarget(event);
+
+                                if (target.type === "button") {
+                                    frames["richedit"].document.execCommand(target.value.toLowerCase(), false, null);
+                                }
+                            });
+
+                            EventUtil.addHandler(complex, "click", function (event) {
+                                event = EventUtil.getEvent(event);
+                                var target = EventUtil.getTarget(event);
+
+                                switch (target.id) {
+
+                                    case "btnHead":
+                                        var selectbox = document.forms[2].elements["title"];
+                                        var Index = selectbox.selectedIndex;
+                                        var selectedOption = selectbox.options[Index];
+                                        if (selectedOption.selected) {
+                                            frames["richedit"].document.execCommand('formatblock', false, selectedOption.value);
+                                        }
+                                        break;
+
+                                    /*
+                                case "btnForecolor":
+                                    var forecolor = prompt("What color?","#FF0000");
+                                    frames["richedit"].document.execCommand("forecolor",false,forecolor);
+                                    break;
+                                    */
+                                    /*
+                                case "btnBackcolor" :
+                                    var backcolor = prompt("What color?","#00FF00");
+                                    frames["richedit"].document.execCommand("backcolor",false,backcolor);
+                                    break;*/
+                                    case "btnInsertParagraph":
+                                        frames["richedit"].document.execCommand("insertparagraph", false, null);
+                                        break;
+                                    case "fontfamily":
+                                        var selectbox = document.forms[2].elements["fontFamily"];
+                                        var Index = selectbox.selectedIndex;
+                                        var selectedOption = selectbox.options[Index];
+                                        if (selectedOption.value) {
+                                            frames["richedit"].document.execCommand("fontname", false, selectedOption.value);
+                                        }
+                                        break;
+                                    case "fontsize":
+                                        var selectbox = document.forms[2].elements["fontSize"];
+                                        var Index = selectbox.selectedIndex;
+                                        var selectedOption = selectbox.options[Index];
+                                        if (selectedOption.value) {
+                                            frames["richedit"].document.execCommand("fontsize", false, parseInt(selectedOption.value, 10));
+                                        }
+                                        break;
+                                    case "fontcolor":
+                                        var selectbox = document.forms[2].elements["fontColor"];
+                                        var Index = selectbox.selectedIndex;
+                                        var selectedOption = selectbox.options[Index];
+                                        if (selectedOption.selected) {
+                                            frames["richedit"].document.execCommand("forecolor", false, selectedOption.value);
+                                        }
+                                        break;
+                                    case "backcolor":
+                                        var selectbox = document.forms[2].elements["backColor"];
+                                        var Index = selectbox.selectedIndex;
+                                        var selectedOption = selectbox.options[Index];
+                                        if (selectedOption.selected) {
+                                            frames["richedit"].document.execCommand("backcolor", false, selectedOption.value);
+                                        }
+                                        break;
+                                    case "btnInsertOrderedList" :
+                                        frames["richedit"].document.execCommand("insertorderedlist", false, null);
+                                        break;
+                                    case "btnInsertUnorderedList" :
+                                        frames["richedit"].document.execCommand("insertunorderedlist", false, null);
+                                        break;
+
+                                    case "btnHr" :
+                                        frames["richedit"].document.execCommand("inserthorizontalrule", false, null);
+                                        break;
+                                    case "btnGetHtml" :
+                                        alert(frames["richedit"].document.body.innerHTML);
+                                        break;
+                                    case "btnCreateLink" :
+                                        var link = prompt("What link?", "http://www.jd.com");
+                                        if (link) {
+                                            frames["richedit"].document.execCommand("createlink", false, link);
+                                        }
+                                        break;
+                                    /*case "btnFontFamily" :
+                                        var font = prompt("What font? such as Arial,SimSun,Kaiti,Microsoft YaHei,SimLi","Times New Roman");
+                                        if(font) {
+                                            frames["richedit"].document.execCommand("fontname",false,font);
+                                        }
+                                        break;*/
+                                    case "btnUnlink" :
+                                        frames["richedit"].document.execCommand("unlink", false, null);
+                                        break;
+                                    /*
+                                case "btnChangeFontSize" :
+                                    var size = prompt("What size?(range from one to seven)","7");
+                                    if(size) {
+                                        frames["richedit"].document.execCommand("fontsize",false,parseInt(size,10));
+                                    }
+                                    break;
+                                    */
+                                    case "btnGetSelected" :
+                                        if (frames["richedit"].getSelection) {
+                                            alert(frames["richedit"].getSelection().toString());
+                                        } else if (frames["richedit"].document.selection) {
+                                            alert(frames["richedit"].document.selection.createRange().text);
+                                        }
+                                        break;
+                                    case "btnHighlight" :
+                                        if (frames["richedit"].getSelection) {
+                                            var selection = frames["richedit"].getSelection();
+                                            var range = selection.getRangeAt(0);
+                                            var span = frames["richedit"].document.createElement("span");
+                                            span.style.backgroundColor = "yellow";
+                                            range.surroundContents(span);
+                                        } else if (frames["richedit"].document.selection) {
+                                            var range = frames["richedit"].document.selection.createRange();
+                                            range.pasteHTML("<span style=\"background-color:yellow\">" + range.htmlText + "</span>");
+                                        }
+                                        break;
+                                }
+                            });
+
+                            EventUtil.addHandler(queryDiv, "click", function (event) {
+                                event = EventUtil.getEvent(event);
+                                var target = EventUtil.getTarget(event);
+
+                                if (target.type === "button") {
+                                    alert(frames["richedit"].document.queryCommandState(target.value.toLowerCase(), false, null));
+                                }
+                            });
+                        })();
+
+
+                        // function $G(id) {
+                        //     return document.getElementById(id);
+                        // }
+                        // var myeditor = UE.getEditor('editor_iframe_holder',{
+                        //     toolbars:[[]],
+                        //     initialContent:'初始化内容',
+                        //     initialFrameHeight:200
+                        // });
+                        // myeditor.addListener('selectionchange',function(){
+                        //     var cmdName = ['bold','italic'],
+                        //         fontName = ['fontfamily','fontsize'];
+                        //     var i = -1;
+                        //     while(i++ < cmdName.length -1) {
+                        //         var state = myeditor.queryCommandState(cmdName[i]);
+                        //         $G(cmdName[i]).style.color = state ===1?"red":"";
+                        //     }
+                        //     i = -1;
+                        //     while(i++<fontName.length -1){
+                        //         var fstate = myeditor.queryCommandValue(fontName[i].toLowerCase());
+                        //         var fselect = $G(fontName[i]);
+                        //         for(var j=0;j<fselect.options.length;j++){
+                        //             if(fselect.options[j].value.toLowerCase().indexOf(fstate.split(",")[0])!=-1){
+                        //                 fselect.options[j].selected = "true";
+                        //             }
+                        //         }
+                        //     }
+                        // });
+                        // function execUnderline(cmd){
+                        //     myeditor.execCommand(cmd);
+                        // }
+
+                    </script>
+                </div>
+                <div style="margin:5px 0;border-bottom: 1px solid #eeeeee">
+                    <ul class="nav nav-pills" role="tablist">
+                        <li role="presentation" class="active"><a href="#">学生交流<span class="badge">453</span></a></li>
+                        <li role="presentation"><a href="#">招生简章<span class="badge">89</span></a></li>
+                        <li role="presentation"><a href="#">招生名单<span class="badge">897</span></a></li>
+                        <li role="presentation"><a href="#">导师团队招生<span class="badge">49</span></a></li>
+                        <li role="presentation"><a href="#">推免政策<span class="badge">9</span></a></li>
+                        <li role="presentation"><a href="#">推免名单<span class="badge">49</span></a></li>
+                        <li role="presentation"><a href="#">笔试面经<span class="badge">51</span></a></li>
+                        <li role="presentation"><a href="#">定位备战经验<span class="badge">19</span></a></li>
+                        <li role="presentation"><a href="#">宣讲会<span class="badge">9</span></a></li>
+                        <li role="presentation"><a href="#">申请文书技巧<span class="badge">27</span></a></li>
+                        <li role="presentation"><a href="#">本版公告<span class="badge">139</span></a></li>
+                    </ul>
+                </div>
+                <div id="threadlist" class="tl bm bmw">
+                    <div class="th">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary">全部主题</button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">全部主题</a></li>
+                                <li><a href="#">投票</a></li>
+                            </ul>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default">
+                                <a href="#">最新</a>
+                            </button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default">
+                                <a href="#">热门</a>
+                            </button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default">
+                                <a href="#">精华</a>
+                            </button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default">更多</button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">全部主题</a></li>
+                                <li><a href="#">另一主题</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">子主题</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bm_c">
+                        <script type="text/javascript">var lasttime = 1520301387;
+                            var listcolspan = "5";</script>
+                        <div id="forumnew" style="display:none"></div>
+                        <form method="post" autocomplete="off" name="moderate" id="moderate"
+                              action="forum.php?mod=topicadmin&action=moderate&fid=37&infloat=yes&nopost=yes">
+                            <input type="hidden" name="formhash" value="bd6c9ef5">
+                            <input type="hidden" name="listextra" value="page%3D1">
+                            <table summary="forum_37" cellspacing="0" cellpadding="0" id="threadlisttableid">
+                                <tbody id="table-list-1">
+                                <tr>
+                                    <td class="icn"><a href="#" target="_blank"><span
+                                                    class="glyphicon glyphicon-thumbs-up"></span></a></td>
+                                    <th class="common">
+                                        <a title="更多操作" class="showcontent y" id="content_1"
+                                           onclick="CONTENT_TID='1';CONTENT_ID='table-list-1';showMenu({'ctrlid':this.id,'menuid':'content_menu'})"
+                                           href="javascript:;"></a>
+                                        <a title="隐藏" class="showhide y" onclick="hideStickThread('1')"
+                                           href="javascript:void(0);"></a>
+                                        <em>
+                                            [
+                                            <a href="#">招生简章</a>
+                                            ]
+                                        </em>
+                                        <a class="s xst" style="font-weight: bold;color:#EE1B2E;"
+                                           onclick="atarget(this)" href="#">2018高校夏令营招生信息汇总（正在更新中）</a>
+                                        <img title="精华贴" align="absmiddle" alt="digest" src="./images/digest_3.gif">
+                                        <span class="tips">
+                                                ...
+                                                <a href="#">2</a>
+                                                <a href="#">3</a>
+                                                <a href="#">4</a>
+                                                <a href="#">5</a>
+                                                <a href="#">6</a>
+                                                ...
+                                                <a href="#">13</a>
+
+                                            </span>
+                                    </th>
+                                    <td class="by">
+                                        <cite>
+                                            <a href="#" c="1" mid="card_1111">knight</a>
+                                        </cite>
+                                        <em>
+                                            <span>2018-1-19</span>
+                                        </em>
+                                    </td>
+                                    <td class="num">
+                                        <a class="xi2" href="#">199</a>
+                                        <em>56561</em>
+                                    </td>
+                                    <td class="by">
+                                        <cite>
+                                            <a href="#" c="1" mid="card_1010">12454876</a>
+                                        </cite>
+                                        <em>
+                                            <a href="#">
+                                                <span title="2018-1-9">22分钟前</span>
+                                            </a>
+                                        </em>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tbody id="table-list-2">
+                                <tr>
+                                    <td class="icn"><a href="#" target="_blank"><span
+                                                    class="glyphicon glyphicon-thumbs-up"></span></a></td>
+                                    <th class="common">
+                                        <a title="更多操作" class="showcontent y" id="content_2"
+                                           onclick="CONTENT_TID='2';CONTENT_ID='table-list-2';showMenu({'ctrlid':this.id,'menuid':'content_menu'})"
+                                           href="javascript:;"></a>
+                                        <a title="隐藏" class="showhide y" onclick="hideStickThread('2')"
+                                           href="javascript:void(0);"></a>
+                                        <em></em>
+                                        <a class="s xst" style="font-weight: bold;color:#EE5023;"
+                                           onclick="atarget(this)" href="#">高校论坛使用必读攻略，帮你节省至少三分之一时间！</a>
+                                        <img title="精华贴" align="absmiddle" alt="digest" src="./images/digest_3.gif">
+                                        <span class="tips">
+                                                ...
+                                                <a href="#">2</a>
+                                                <a href="#">3</a>
+                                                <a href="#">4</a>
+                                                <a href="#">5</a>
+                                                <a href="#">6</a>
+                                                ...
+                                                <a href="#">13</a>
+
+                                            </span>
+                                    </th>
+                                    <td class="by">
+                                        <cite>
+                                            <a href="#" c="1" mid="card_1111">knight</a>
+                                        </cite>
+                                        <em>
+                                            <span>2018-1-19</span>
+                                        </em>
+                                    </td>
+                                    <td class="num">
+                                        <a class="xi2" href="#">199</a>
+                                        <em>56561</em>
+                                    </td>
+                                    <td class="by">
+                                        <cite>
+                                            <a href="#" c="1" mid="card_1010">12454876</a>
+                                        </cite>
+                                        <em>
+                                            <a href="#">
+                                                <span title="2018-1-9">22分钟前</span>
+                                            </a>
+                                        </em>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tbody id="table-list-3">
+                                <tr>
+                                    <td class="icn"><a href="#" target="_blank"><span
+                                                    class="glyphicon glyphicon-thumbs-up"></span></a></td>
+                                    <th class="common">
+                                        <a title="更多操作" class="showcontent y" id="content_3"
+                                           onclick="CONTENT_TID='3';CONTENT_ID='table-list-3';showMenu({'ctrlid':this.id,'menuid':'content_menu'})"
+                                           href="javascript:;"></a>
+                                        <a title="隐藏" class="showhide y" onclick="hideStickThread('3')"
+                                           href="javascript:void(0);"></a>
+                                        <em></em>
+                                        <a class="s xst" style="font-weight: bold;color:#996600;"
+                                           onclick="atarget(this)" href="#">经验分享群</a>
+                                        <img title="精华贴" align="absmiddle" alt="digest" src="./images/digest_3.gif">
+                                        <span class="tips">
+                                                ...
+                                                <a href="#">2</a>
+                                                <a href="#">3</a>
+                                                <a href="#">4</a>
+                                                <a href="#">5</a>
+                                                <a href="#">6</a>
+                                                ...
+                                                <a href="#">13</a>
+
+                                            </span>
+                                    </th>
+                                    <td class="by">
+                                        <cite>
+                                            <a href="#" c="1" mid="card_1111">knight</a>
+                                        </cite>
+                                        <em>
+                                            <span>2018-1-19</span>
+                                        </em>
+                                    </td>
+                                    <td class="num">
+                                        <a class="xi2" href="#">199</a>
+                                        <em>56561</em>
+                                    </td>
+                                    <td class="by">
+                                        <cite>
+                                            <a href="#" c="1" mid="card_1010">12454876</a>
+                                        </cite>
+                                        <em>
+                                            <a href="#">
+                                                <span title="2018-1-9">22分钟前</span>
+                                            </a>
+                                        </em>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tbody id="table-list-4">
+                                <tr>
+                                    <td class="icn"><a href="#" target="_blank"><span
+                                                    class="glyphicon glyphicon-thumbs-up"></span></a></td>
+                                    <th class="common">
+                                        <a title="更多操作" class="showcontent y" id="content_4"
+                                           onclick="CONTENT_TID='4';CONTENT_ID='table-list-4';showMenu({'ctrlid':this.id,'menuid':'content_menu'})"
+                                           href="javascript:;"></a>
+                                        <a title="隐藏" class="showhide y" onclick="hideStickThread('4')"
+                                           href="javascript:void(0);"></a>
+                                        <em>
+                                            [
+                                            <a href="#">招生简章</a>
+                                            ]
+                                        </em>
+                                        <a class="s xst" style="font-weight: bold;color:#EEEB2E;"
+                                           onclick="atarget(this)" href="#">2018高校招生简章汇总</a>
+                                        <img title="精华贴" align="absmiddle" alt="digest" src="./images/digest_3.gif">
+                                        <span class="tips">
+                                                ...
+                                                <a href="#">2</a>
+                                                <a href="#">3</a>
+                                                <a href="#">4</a>
+                                                <a href="#">5</a>
+                                                <a href="#">6</a>
+                                                ...
+                                                <a href="#">13</a>
+
+                                            </span>
+                                    </th>
+                                    <td class="by">
+                                        <cite>
+                                            <a href="#" c="1" mid="card_1111">knight</a>
+                                        </cite>
+                                        <em>
+                                            <span>2018-1-19</span>
+                                        </em>
+                                    </td>
+                                    <td class="num">
+                                        <a class="xi2" href="#">199</a>
+                                        <em>56561</em>
+                                    </td>
+                                    <td class="by">
+                                        <cite>
+                                            <a href="#" c="1" mid="card_1010">12454876</a>
+                                        </cite>
+                                        <em>
+                                            <a href="#">
+                                                <span title="2018-1-9">22分钟前</span>
+                                            </a>
+                                        </em>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tbody id="table-list-5">
+                                <tr>
+                                    <td class="icn"><a href="#" target="_blank"><span
+                                                    class="glyphicon glyphicon-thumbs-up"></span></a></td>
+                                    <th class="common">
+                                        <a title="更多操作" class="showcontent y" id="content_5"
+                                           onclick="CONTENT_TID='5';CONTENT_ID='table-list-5';showMenu({'ctrlid':this.id,'menuid':'content_menu'})"
+                                           href="javascript:;"></a>
+                                        <a title="隐藏" class="showhide y" onclick="hideStickThread('5')"
+                                           href="javascript:void(0);"></a>
+                                        <em></em>
+                                        <a class="s xst" style="font-weight: bold;color:#3C9D40;"
+                                           onclick="atarget(this)" href="#">英语课堂第三季：如何从容面对英语考试（雅思、托福）</a>
+                                        <img title="精华贴" align="absmiddle" alt="digest" src="./images/digest_3.gif">
+                                        <span class="tips">
+                                                ...
+                                                <a href="#">2</a>
+                                                <a href="#">3</a>
+                                                <a href="#">4</a>
+                                                <a href="#">5</a>
+                                                <a href="#">6</a>
+                                                ...
+                                                <a href="#">13</a>
+
+                                            </span>
+                                    </th>
+                                    <td class="by">
+                                        <cite>
+                                            <a href="#" c="1" mid="card_1111">knight</a>
+                                        </cite>
+                                        <em>
+                                            <span>2018-1-19</span>
+                                        </em>
+                                    </td>
+                                    <td class="num">
+                                        <a class="xi2" href="#">199</a>
+                                        <em>56561</em>
+                                    </td>
+                                    <td class="by">
+                                        <cite>
+                                            <a href="#" c="1" mid="card_1010">12454876</a>
+                                        </cite>
+                                        <em>
+                                            <a href="#">
+                                                <span title="2018-1-9">22分钟前</span>
+                                            </a>
+                                        </em>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tbody id="diveder">
+                                <tr clsss="ts">
+                                    <td></td>
+                                    <th>
+                                        <a title="更新" class="refresh" onclick="checkForumnew_btn('37')"
+                                           href="javascript:;">板块主题 <span class="glyphicon glyphicon-repeat"></span></a>
+
+                                    </th>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                                <tbody id="normal-list-6">
+                                <tr>
+                                    <td class="icn"><a href="#" title="有新回复" target="_blank"><span
+                                                    class="glyphicon glyphicon-file"></span></a></td>
+                                    <th class="new">
+                                        <a title="更多操作" class="showcontent y" id="content_6"
+                                           onclick="CONTENT_TID='6';CONTENT_ID='normal-list-6';showMenu({'ctrlid':this.id,'menuid':'content_menu'})"
+                                           href="javascript:;"></a>
+
+                                        <em>
+                                            [
+                                            <a href="#">学生交流</a>
+                                            ]
+                                        </em>
+                                        <a class="s xst" onclick="atarget(this)" href="#">推免北大记：来自一学长的典型非心灵鸡汤</a>
+                                        <img title="精华贴" align="absmiddle" alt="digest" src="./images/freshman.gif">
+                                        <span class="tips">
+                                                ...
+                                                <a href="#">2</a>
+                                                <a href="#">3</a>
+                                                <a href="#">4</a>
+                                                <a href="#">5</a>
+                                                <a href="#">6</a>
+                                                ...
+                                                <a href="#">13</a>
+
+                                            </span>
+                                    </th>
+                                    <td class="by">
+                                        <cite>
+                                            <a href="#" c="1" mid="card_1111">knight</a>
+                                        </cite>
+                                        <em>
+                                            <span>2018-1-19</span>
+                                        </em>
+                                    </td>
+                                    <td class="num">
+                                        <a class="xi2" href="#">199</a>
+                                        <em>56561</em>
+                                    </td>
+                                    <td class="by">
+                                        <cite>
+                                            <a href="#" c="1" mid="card_1010">12454876</a>
+                                        </cite>
+                                        <em>
+                                            <a href="#">
+                                                <span title="2018-1-9">22分钟前</span>
+                                            </a>
+                                        </em>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tbody id="normal-list-7">
+                                <tr>
+                                    <td class="icn"><a href="#" title="有新回复" target="_blank"><span
+                                                    class="glyphicon glyphicon-file"></span></a></td>
+                                    <th class="new">
+                                        <a title="更多操作" class="showcontent y" id="content_7"
+                                           onclick="CONTENT_TID='7';CONTENT_ID='normal-list-7';showMenu({'ctrlid':this.id,'menuid':'content_menu'})"
+                                           href="javascript:;"></a>
+
+                                        <em>
+                                            [
+                                            <a href="#">学生交流</a>
+                                            ]
+                                        </em>
+                                        <a class="s xst" onclick="atarget(this)" href="#">关于保研用那几个学期成绩得问题</a>
+                                        <img title="精华贴" align="absmiddle" alt="digest" src="./images/freshman.gif">
+                                        <span class="tips">
+                                                ...
+                                                <a href="#">2</a>
+                                                <a href="#">3</a>
+                                                <a href="#">4</a>
+                                                <a href="#">5</a>
+                                                <a href="#">6</a>
+                                                ...
+                                                <a href="#">13</a>
+
+                                            </span>
+                                    </th>
+                                    <td class="by">
+                                        <cite>
+                                            <a href="#" c="1" mid="card_1111">knight</a>
+                                        </cite>
+                                        <em>
+                                            <span>2018-1-19</span>
+                                        </em>
+                                    </td>
+                                    <td class="num">
+                                        <a class="xi2" href="#">199</a>
+                                        <em>56561</em>
+                                    </td>
+                                    <td class="by">
+                                        <cite>
+                                            <a href="#" c="1" mid="card_1010">12454876</a>
+                                        </cite>
+                                        <em>
+                                            <a href="#">
+                                                <span title="2018-1-9">22分钟前</span>
+                                            </a>
+                                        </em>
+                                    </td>
+                                </tr>
+                                </tbody>
+                                <tbody id="normal-list-8">
+                                <tr>
+                                    <td class="icn"><a href="#" title="有新回复" target="_blank"><span
+                                                    class="glyphicon glyphicon-file"></span></a></td>
+                                    <th class="new">
+                                        <a title="更多操作" class="showcontent y" id="content_8"
+                                           onclick="CONTENT_TID='8';CONTENT_ID='normal-list-8';showMenu({'ctrlid':this.id,'menuid':'content_menu'})"
+                                           href="javascript:;"></a>
+
+                                        <em>
+                                            [
+                                            <a href="#">学生交流</a>
+                                            ]
+                                        </em>
+                                        <a class="s xst" onclick="atarget(this)" href="#">推免北大记：来自一学长的典型非心灵鸡汤</a>
+                                        <img title="精华贴" align="absmiddle" alt="digest" src="./images/freshman.gif">
+                                        <span class="tips">
+                                                ...
+                                                <a href="#">2</a>
+                                                <a href="#">3</a>
+                                                <a href="#">4</a>
+                                                <a href="#">5</a>
+                                                <a href="#">6</a>
+                                                ...
+                                                <a href="#">13</a>
+
+                                            </span>
+                                    </th>
+                                    <td class="by">
+                                        <cite>
+                                            <a href="#" c="1" mid="card_1111">knight</a>
+                                        </cite>
+                                        <em>
+                                            <span>2018-1-19</span>
+                                        </em>
+                                    </td>
+                                    <td class="num">
+                                        <a class="xi2" href="#">199</a>
+                                        <em>56561</em>
+                                    </td>
+                                    <td class="by">
+                                        <cite>
+                                            <a href="#" c="1" mid="card_1010">12454876</a>
+                                        </cite>
+                                        <em>
+                                            <a href="#">
+                                                <span title="2018-1-9">22分钟前</span>
+                                            </a>
+                                        </em>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                        </form>
+                    </div>
+                </div>
+                <div class="wp clearfix" id="ft">
+                    <div class="y" id="flk">
+                        <p>
+                            <a title="QQ"
+                               href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzkzODA2NzQ2NF80NDg2NjBfNDAwODEwMDY2OV8yXw"
+                               target="_blank">
+                                <img alt="QQ" src="./images/site_qq.jpg"/>
+                            </a>
+                            <span class="pipe">|</span>
+                            <a href="talkShow.html">Archiver</a>
+                            <span class="pipe">|</span>
+                            <a href="talkShow.html">手机版</a>
+                            <span class="pipe">|</span>
+                            <a href="talkShow.html">小黑屋</a>
+                            <span class="pipe">|</span>
+                            <strong>
+                                <a href="talkShow.html" target="_blank">高校论坛</a>
+                            </strong>
+                            (
+                            <a href="talkShow.html" target="_blank">沪ICP备14002018号-1</a>
+                            )
+                        </p>
+                        <p class="xs0">
+                            GMT+8,2018-2-26 20:25
+                            <span id="debuginfo">.This page is cached at 20:25:53</span>
+                        </p>
+                    </div>
+                    <div id="frt">
+                        <p>
+                            Powered by
+                            <strong>
+                                <a href="http://www.knight.com" target="_blank">Knight!</a>
+                            </strong>
+                            <em>V1.0</em>
+                        </p>
+                        <p class="xs0">
+                            &copy; 2012-2018
+                            <a href="http://www.knight.com" target="_blank">Knight Inc.</a>
+                        </p>
+                    </div>
+                </div>
+                <div id="scrolltop" style="right:10px;visibility:visible;">
+                    <span hidefocus="true">
+                        <a title="返回顶部" class="scrolltop" href="javascript:;"
+                           onclick="window.scrollTo(0,0);return false;">
+                            <b>返回顶部</b>
+                        </a>
+                    </span>
+                    <span>
+                        <a title="返回板块" class="returnboard" hidefocus="true" href="/forum"></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

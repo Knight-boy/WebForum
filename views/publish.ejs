@@ -1,0 +1,71 @@
+<%- include('header') %>
+    <!-- <div class="nav">
+    <ul>
+        <li><a href="/reg">Sign up</a></li>
+        <li><a href="/log">Sign in</a></li>
+        <li><a href="/">Sign out</a></li>
+    </ul>
+    </div> -->
+    <div class="nav">
+        <div class="nav_area">
+            <div class="center_area">
+                <div class="clearfix">
+                    <ul class="navigation">
+                        <li class="dropdown">
+                            <a href="/">首页</a>
+                        </li>
+                        <li class="lastchild" style="float:right">
+                            <a href="/">登出</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="container">
+        <div id="publisher">
+            <p>
+
+            </p>
+        </div>
+    </div> -->
+    <div id="container" class="container">
+        <h2>已发布</h2>
+        <ul class="blogtext content" id ="parent">
+            <li>
+                <%= val %>
+                <div style="font-size: 1em;display:inline-block;float:right;cursor: pointer;"><span>删除</span></div>
+            </li>
+        </ul>
+    </div>
+    <script>
+        var x=document.getElementById("parent");
+        var lists = document.getElementsByTagName("li");
+        var list;
+        //给所有的li元素添加捕获阶段的事件处理程序
+        for(var i=0;i<lists.length;i++)
+        {
+            lists[i].addEventListener("click", function(e) {
+                list = e.currentTarget;
+            },true);
+        }
+        var handler = function() {
+            x.removeChild(list);
+        };
+        x.addEventListener("click",handler,false);
+    </script>
+    <footer>
+        <hr/>
+        <p>
+            <a href="http://www.knight.com" target="_blank">ByKnight</a>
+            &copy 2018
+        </p>
+    </footer>
+        
+    <div id="scrolltop" style="right:10px;visibility:visible;">
+        <span>
+            <a title="返回首页" class="returnboard" hidefocus="true" href="/"></a>
+        </span>
+    </div>
+<%- include('footer') %>
