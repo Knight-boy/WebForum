@@ -2,8 +2,10 @@ body {
   padding: 0 0;
   margin:0 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background:url('https://ws2.sinaimg.cn/large/a15b4afegy1fc6ok5m453j22bc1ji47p');
-  background-size: cover;
+  background-image: url('https://raw.githubusercontent.com/Knight-boy/QQone/gh-pages/public/images/body_girlasideflower.jpg');
+  /*background-size: cover;*/
+  background-position-x: center;
+  background-position-y: center;
 }
 
 a {

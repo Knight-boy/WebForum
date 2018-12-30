@@ -3,8 +3,8 @@
 let config = {
     host: 'localhost',
     user: 'root',
-    password: '463800',
-    database: 'logininfo'
+    password: '',
+    database: 'test'
 };
 
 //数据库连接
